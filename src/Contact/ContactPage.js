@@ -61,6 +61,7 @@ const ContactPage = () => {
 
   return (
     <div className="w-full flex justify-evenly my-4 max-md:justify-center max-md:flex-col">
+      {/* the image of contact page */}
       <div className="h-[600px]">
         <img src={contactImage} className="h-full"></img>
       </div>
@@ -68,7 +69,8 @@ const ContactPage = () => {
         <h1 className="text-[#00054B] text-5xl font-bold max-md:text-center max-md:text-3xl">
           CONTACT US
         </h1>
-        <div className="flex w-[90%] flex-row justify-evenly mt-7 max-md:flex-col max-md:justify-center max-md:w-full">
+        <div className="flex w-[90%] flex-row justify-evenly mt-7 flex-wrap max-md:flex-col max-md:w-full">
+          {/* the form of contact page */}
           <form
             onSubmit={handleSubmit}
             className="flex flex-col w-full max-md:justify-center"
@@ -103,6 +105,7 @@ const ContactPage = () => {
               Contact Us
             </button>
           </form>
+          {/* social links here */}
           <div className="flex flex-col justify-start mt-10 max-md:justify-center max-md:mt-10">
             <div className="text-[#00054B]">
               <h2 className="text-2xl font-bold mb-2">Contact</h2>
