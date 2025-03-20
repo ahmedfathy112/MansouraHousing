@@ -18,13 +18,16 @@ const AdminUsers = ({ type }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const endpoint = type === "owners" ? "/api/Owner/" : "/api/Student/";
+        const endpoint =
+          type === "owners"
+            ? `${process.env.REACT_APP_API_URL}/api/Owner/`
+            : `${process.env.REACT_APP_API_URL}/api/Student/`;
 
         // إضافة التوكن إلى الهيدر
         const token = localStorage.getItem("token");
         const response = await axios.get(endpoint, {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         });
 
@@ -42,7 +45,9 @@ const AdminUsers = ({ type }) => {
   const handleDelete = async (userId) => {
     try {
       const endpoint =
-        type === "owners" ? `/api/Owner/${userId}` : `/api/Student/${userId}`;
+        type === "owners"
+          ? `${process.env.REACT_APP_API_URL}/api/Owner/${userId}`
+          : `${process.env.REACT_APP_API_URL}/api/Student/${userId}`;
 
       const token = localStorage.getItem("token");
       await axios.delete(endpoint, {
@@ -53,9 +58,7 @@ const AdminUsers = ({ type }) => {
 
       setUsers(
         users.filter((user) =>
-          type === "owners"
-            ? user.id !== userId
-            : user.id !== userId
+          type === "owners" ? user.id !== userId : user.id !== userId
         )
       );
     } catch (error) {

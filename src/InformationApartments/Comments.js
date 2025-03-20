@@ -18,7 +18,9 @@ const CommentsSec = () => {
 
   const fetchStudentName = async (studentId) => {
     try {
-      const response = await axios.get(`/api/Student/${studentId}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/Student/${studentId}`
+      );
       if (response.data && response.data.normalizedUserName) {
         return response.data.normalizedUserName;
       } else {
@@ -32,7 +34,9 @@ const CommentsSec = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`/api/Comment/${apartment_Id}`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/Comment/${apartment_Id}`
+        );
         const commentsWithUserNames = await Promise.all(
           response.data.map(async (comment) => {
             const studentName = await fetchStudentName(comment.studentId);
@@ -68,7 +72,7 @@ const CommentsSec = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "/api/Comment",
+        `${process.env.REACT_APP_API_URL}/api/Comment`,
         {
           apartment_Id: parseInt(apartment_Id),
           comment_Text: commentText,
@@ -105,21 +109,26 @@ const CommentsSec = () => {
     if (window.confirm("Are you sure you want to delete this comment?")) {
       try {
         const token = localStorage.getItem("token");
-        await axios.delete(`/api/Comment/${commentId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          data: {
-            comment_Text: "",
-          },
-        });
+        await axios.delete(
+          `${process.env.REACT_APP_API_URL}/api/Comment/${commentId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+            data: {
+              comment_Text: "",
+            },
+          }
+        );
 
         setComments(
           comments.filter((comment) => comment.comment_Id !== commentId)
         );
 
-        const response = await axios.get(`/api/Comment/${apartment_Id}`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/Comment/${apartment_Id}`
+        );
         const commentsWithUserNames = await Promise.all(
           response.data.map(async (comment) => {
             const studentName = await fetchStudentName(comment.studentId);

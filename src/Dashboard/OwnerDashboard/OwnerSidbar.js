@@ -24,11 +24,14 @@ const OwnerSidebar = ({
       }).then(async (result) => {
         if (result.isConfirmed) {
           const token = localStorage.getItem("token");
-          await axios.delete(`/api/Owner/${StudentId}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          await axios.delete(
+            `${process.env.REACT_APP_API_URL}/api/Owner/${StudentId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
           localStorage.removeItem("token");
           Swal.fire("Goodbye!", "You have left us.", "success");

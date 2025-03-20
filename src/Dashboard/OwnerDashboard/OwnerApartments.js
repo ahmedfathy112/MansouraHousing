@@ -31,7 +31,9 @@ const OwnerApartments = () => {
 
     if (ownerId) {
       try {
-        const response = await fetch(`/api/Apartment/GetAll`);
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/Apartment/GetAll`
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -68,12 +70,15 @@ const OwnerApartments = () => {
 
     if (window.confirm("Are you sure you want to delete this apartment?")) {
       try {
-        const response = await fetch(`/api/Apartment/${id}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/Apartment/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
 
         if (response.ok) {
           setApartments(apartments.filter((apt) => apt.id !== id));
@@ -121,7 +126,7 @@ const OwnerApartments = () => {
       };
 
       const response = await fetch(
-        `/api/Apartment/${updatedApartment.apartment_Id}`,
+        `${process.env.REACT_APP_API_URL}/api/Apartment/${updatedApartment.apartment_Id}`,
         {
           method: "PUT",
           headers: {

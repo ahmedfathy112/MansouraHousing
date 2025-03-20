@@ -12,7 +12,7 @@ const FeaturedCard = () => {
 
   useEffect(() => {
     axios
-      .get("/api/Apartment/GetAll")
+      .get(`${process.env.REACT_APP_API_URL}/api/Apartment/GetAll`)
       .then((response) => {
         setApartments(response.data.slice(-4));
       })

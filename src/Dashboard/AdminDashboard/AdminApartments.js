@@ -18,7 +18,9 @@ const AdminApartments = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("/api/Apartment/GetAll");
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/Apartment/GetAll`
+        );
         setApartments(data);
       } catch (error) {
         console.error("Fetch error:", error);
@@ -36,7 +38,9 @@ const AdminApartments = () => {
     if (!window.confirm("Delete this apartment?")) return;
 
     try {
-      await axios.delete(`/api/Apartment/${apartmentId}`);
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/Apartment/${apartmentId}`
+      );
       setApartments(apartments.filter((a) => a.apartment_Id !== apartmentId));
     } catch (error) {
       console.error("Delete error:", error);

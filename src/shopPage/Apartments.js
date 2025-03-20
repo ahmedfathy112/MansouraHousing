@@ -26,7 +26,7 @@ function Apartments() {
 
   useEffect(() => {
     axios
-      .get("/api/Apartment/GetAll")
+      .get("process.env.REACT_APP_API_URL/api/Apartment/GetAll")
       .then((response) => {
         setAllApartments(response.data);
         setFilteredApartments(response.data);

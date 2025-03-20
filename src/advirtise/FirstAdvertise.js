@@ -80,13 +80,16 @@ const FirstAdvertise = ({ formData, setFormData, nextStep }) => {
     });
 
     try {
-      const response = await fetch("/api/Apartment", {
-        method: "POST",
-        body: formDataToSend,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/Apartment`,
+        {
+          method: "POST",
+          body: formDataToSend,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.ok) {
         Swal.fire({

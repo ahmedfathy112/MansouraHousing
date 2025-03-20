@@ -45,11 +45,14 @@ const Advertise = () => {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/Apartment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/Apartment`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to submit data");
 

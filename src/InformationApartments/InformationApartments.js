@@ -16,13 +16,15 @@ function InformationApartment() {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`/api/Apartment/${params.apartment_Id}`)
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/Apartment/${params.apartment_Id}`
+    )
       .then((res) => res.json())
       .then((newApartments) => setNewApartments(newApartments));
   }, [params.apartment_Id]);
 
   useEffect(() => {
-    fetch(`/api/Owner/${params.owner_Id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/api/Owner/${params.owner_Id}`)
       .then((res) => res.json())
       .then((newOwner) => setNewOwner(newOwner));
   }, [params.owner_Id]);
