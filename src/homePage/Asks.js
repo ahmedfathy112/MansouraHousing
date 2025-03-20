@@ -5,24 +5,44 @@ const FaqSection = () => {
 
   const faqs = [
     {
-      question: "What are the key principles of UX design?",
+      question: "What is the purpose of this website?",
       answer:
-        "The key principles of UX design include usability, accessibility, simplicity, and consistency.",
+        "The purpose of this website is to connect landlords who have apartments for rent with university students looking for housing near their campuses.",
     },
     {
-      question: "What is the difference between UX and UI design?",
+      question: "How can I register as a landlord or a student?",
       answer:
-        "UX design focuses on the overall user experience, while UI design is about the user interface’s look and feel.",
+        "You can register by clicking on the 'Sign Up' button, selecting your role as either a landlord or a student, and filling out the required information.",
     },
     {
-      question: "What is a wireframe?",
+      question: "Is it free to use the platform?",
       answer:
-        "A wireframe is a low-fidelity layout design that outlines the structure and key elements of a web page or app.",
+        "Yes, registering on the platform is free. However, landlords may have the option to pay for premium features to promote their listings.",
     },
     {
-      question: "What is user testing?",
+      question: "How can I search for apartments?",
       answer:
-        "User testing involves evaluating a product by testing it on real users to gather feedback for improvement.",
+        "Students can search for apartments by using the search bar, applying filters such as location, price range, or apartment size, and viewing detailed listings.",
+    },
+    {
+      question: "Can I contact landlords directly?",
+      answer:
+        "Yes, once you find an apartment you are interested in, you can contact the landlord directly through the platform's messaging system to inquire or arrange a booking.",
+    },
+    {
+      question: "How are landlords and students verified?",
+      answer:
+        "We use a verification system where landlords and students need to verify their email addresses and provide additional details to ensure a trustworthy environment.",
+    },
+    {
+      question: "What should I do if I encounter an issue?",
+      answer:
+        "If you encounter any problems, you can contact our support team through the 'Help' section or by sending an email to support@example.com.",
+    },
+    {
+      question: "Are there options for short-term rentals?",
+      answer:
+        "Yes, landlords can specify whether their apartments are available for short-term or long-term rentals in the listing details.",
     },
   ];
 
@@ -31,7 +51,7 @@ const FaqSection = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
+    <div className="max-w-2xl mx-auto p-4 mb-10">
       <h1 className="text-2xl font-bold text-center mb-6">
         Frequently Asked Questions
       </h1>

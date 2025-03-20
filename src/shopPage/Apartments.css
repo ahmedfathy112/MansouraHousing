@@ -1,9 +1,11 @@
 .apartment-container {
-  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 85% !important;
   max-width: 100% !important;
   height: auto;
   /* padding: 0.5%; */
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   flex-wrap: wrap !important;
   text-align: left !important;
@@ -21,7 +23,8 @@
   cursor: pointer;
 }
 .icon-stairs {
-  width: 16px;
+  height: 15px !important;
+  width: 15px;
   margin: 0px 4px 0px 5px;
 }
 .icon-meter {
@@ -30,7 +33,7 @@
 }
 .icon-room {
   width: 16px;
-  margin: 0px 2px 0px 0px;
+  margin: -1px 3px 0px 0px;
 }
 .text {
   font-size: 14px;
@@ -38,4 +41,41 @@
 }
 .card-date {
   opacity: 70%;
+}
+.card-shop {
+  transition: 0.5s ease;
+}
+.card-shop:hover {
+  transform: translateY(-10px);
+  border-radius: 0;
+}
+@media (min-width: 1200px) and (max-width: 1208px) {
+  .text {
+    font-size: 12px !important;
+  }
+  .icon-room {
+    width: 13px;
+  }
+  .icon-stairs {
+    width: 13px;
+    height: 12px !important;
+  }
+  .icon-meter {
+    width: 12px;
+  }
+}
+@media (min-width: 768px) and (max-width: 918px) {
+  .text {
+    font-size: 10px;
+  }
+  .icon-room {
+    width: 12px;
+  }
+  .icon-stairs {
+    width: 12px;
+    height: 10px !important;
+  }
+  .icon-meter {
+    width: 13px;
+  }
 }

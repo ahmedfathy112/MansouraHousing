@@ -59,8 +59,7 @@
   display: inline-block;
 }
 
-.logInPage .loginBtn,
-.logInPage .googleBtn {
+.logInPage .loginBtn {
   text-align: center;
   background-color: #68acfd;
   width: 80%;
@@ -73,22 +72,6 @@
 
 .logInPage .loginBtn:hover {
   background-color: #4191f3;
-}
-
-.logInPage .googleBtn {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #434faa;
-}
-
-.logInPage .googleBtn:hover {
-  background-color: #2f3da3;
-}
-
-.logInPage .googleLogo {
-  margin-right: 10px;
 }
 
 .logInPage span {

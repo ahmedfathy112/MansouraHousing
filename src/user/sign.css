@@ -23,13 +23,6 @@
   margin-block: 30px;
 }
 
-/* .leftSide .firstFlexIconDiv div,
-.leftSide .secondFlexIconsDiv div {
-  width: 140px;
-  height: 130px;
-  margin: auto;
-} */
-
 .signUp .container h6 {
   width: 70%;
   margin: auto;
@@ -147,6 +140,6 @@
   .leftSide,
   .rightSide {
     text-align: center;
-    width: 80%;
+    width: 100%;
   }
 }

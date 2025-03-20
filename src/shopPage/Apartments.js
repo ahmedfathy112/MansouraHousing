@@ -1,124 +1,183 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Apartments.css";
-import imageApartment from "../images/apartment1.jpg";
-import iconMeter from "../images/iconmeter.png";
 import iconStairs from "../images/iconstairs.png";
+import { faBed, faHome } from "@fortawesome/free-solid-svg-icons";
 import NavFilter from "./NavFilter";
 import Next from "./Next";
-import { FaHome } from "react-icons/fa";
-// import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Grid } from "react-loader-spinner";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md"; // استيراد الأيقونتين
+
 function Apartments() {
+  const [allApartments, setAllApartments] = useState([]);
+  const [filteredApartments, setFilteredApartments] = useState([]);
+  const [filters, setFilters] = useState({
+    numRooms: "",
+    numBeds: "",
+    minPrice: "",
+    maxPrice: "",
+  });
+  const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/api/Apartment/GetAll")
+      .then((response) => {
+        setAllApartments(response.data);
+        setFilteredApartments(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching apartments:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+
+    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(savedFavorites);
+  }, []);
+
+  const handleFilter = (newFilters) => {
+    setFilters(newFilters);
+  };
+
+  const toggleFavorite = (apartment) => {
+    let updatedFavorites;
+    const isFavorite = favorites.some(
+      (fav) => fav.apartment_Id === apartment.apartment_Id
+    );
+
+    if (isFavorite) {
+      updatedFavorites = favorites.filter(
+        (fav) => fav.apartment_Id !== apartment.apartment_Id
+      );
+    } else {
+      updatedFavorites = [...favorites, apartment];
+    }
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+
+  useEffect(() => {
+    let filtered = allApartments.filter((apartment) => {
+      return (
+        (filters.numRooms === "" ||
+          apartment.num_Room === parseInt(filters.numRooms)) &&
+        (filters.numBeds === "" ||
+          apartment.num_Bed === parseInt(filters.numBeds)) &&
+        (filters.minPrice === "" ||
+          apartment.price >= parseFloat(filters.minPrice)) &&
+        (filters.maxPrice === "" ||
+          apartment.price <= parseFloat(filters.maxPrice))
+      );
+    });
+
+    setFilteredApartments(filtered);
+  }, [filters, allApartments]);
+
+  if (loading) {
+    return (
+      <div className="mt-5 mb-5 w-full flex justify-center mx-auto">
+        <Grid
+          visible={true}
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="grid-loading"
+          radius="12.5"
+          wrapperStyle={{}}
+          wrapperClass="grid-wrapper"
+        />
+      </div>
+    );
+  }
+
   return (
     <>
-      <NavFilter />
+      <NavFilter onFilter={handleFilter} />
       <div className="container-fluid apartment-container">
         <div className="row">
-          <div className="col-lg-3 col-md-4">
-            <div className="card">
-              <img
-                src={imageApartment}
-                className="card-img-top"
-                alt="NoImage"
-              />
-              <div className="card-body">
-                <h3 className="card-title">290.000 $</h3>
-                <h5 className="card-title">Apartment for rent</h5>
-                <h6 className="card-date">1 July 2024</h6>
-                <div className="flex flex-row ">
-                  {/* <FontAwesomeIcon icon={faHome} className="icon-room" /> */}
-                  <FaHome />
-                  <span className="text">3 room </span>
-                  <img
-                    src={iconStairs}
-                    alt="no"
-                    className="icon-stairs  mb-1"
-                  />
-                  <span className="text">5 floor </span>
-                </div>
-              </div>
+          {filteredApartments.length === 0 ? (
+            <div className="text-center w-100 mt-5">
+              <h3 className="text-danger">❌ No results match your search.</h3>
+              <p>Try adjusting your search criteria and try again.</p>
             </div>
-          </div>
-          <div className="col-lg-3 col-md-4">
-            <div className="card">
-              <img
-                src={imageApartment}
-                className="card-img-top"
-                alt="NoImage"
-              />
-              <div className="card-body">
-                <h3 className="card-title">290.000 $</h3>
-                <h5 className="card-title">Apartment for rent</h5>
-                <h6 className="card-date">1 July 2024</h6>
-                <div className="flex flex-row ">
-                  {/* <FontAwesomeIcon icon={faHome} className="icon-room" /> */}
-                  <FaHome />
-                  <span className="text">3 room </span>
-                  <img
-                    src={iconStairs}
-                    alt="no"
-                    className="icon-stairs  mb-1"
-                  />
-                  <span className="text">5 floor </span>
-                </div>
+          ) : (
+            filteredApartments.map((apartment) => (
+              <div
+                className="col-xl-3 col-lg-4 col-md-4 card-shop"
+                key={apartment.apartment_Id}
+              >
+                <Link
+                  to={`/details/${apartment.apartment_Id}/owner/${apartment.ownerId}`}
+                >
+                  <div className="card ">
+                    <div className="w-full h-[200px]">
+                      <img
+                        loading="lazy"
+                        src={`data:image/jpeg;base64,${apartment.apartment_Image}`}
+                        className="card-img-top w-full h-full cover-fill"
+                        alt="NoImage"
+                      />
+                    </div>
+                    <div className="card-body relative">
+                      {favorites.some(
+                        (fav) => fav.apartment_Id === apartment.apartment_Id
+                      ) ? (
+                        <MdFavorite
+                          className="absolute top-4 right-3 text-2xl cursor-pointer z-30 text-red-500"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            toggleFavorite(apartment);
+                          }}
+                        />
+                      ) : (
+                        <MdFavoriteBorder
+                          className="absolute top-4 right-3 text-2xl cursor-pointer z-30"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            toggleFavorite(apartment);
+                          }}
+                        />
+                      )}
+                      <h3 className="card-title">{apartment.price} $</h3>
+                      <h5 className="card-title">{apartment.title}</h5>
+                      <h6 className="card-date">
+                        Date:{" "}
+                        {new Date(apartment.publisheddate).toLocaleDateString()}
+                      </h6>
+                      <h6 className="d-flex">
+                        <FontAwesomeIcon icon={faHome} className="icon-room" />
+                        <span className="text">{apartment.num_Room} Room</span>
+                        <img
+                          loading="lazy"
+                          src={iconStairs}
+                          alt="no"
+                          className="icon-stairs mb-1"
+                        />
+                        <span className="text mr-2">
+                          {apartment.floorNum} Floor
+                        </span>
+                        <FontAwesomeIcon icon={faBed} className="icon-room" />
+                        <span className="text">{apartment.num_Bed} Bed</span>
+                      </h6>
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-md-4">
-            <div className="card">
-              <img
-                src={imageApartment}
-                className="card-img-top"
-                alt="NoImage"
-              />
-              <div className="card-body">
-                <h3 className="card-title">290.000 $</h3>
-                <h5 className="card-title">Apartment for rent</h5>
-                <h6 className="card-date">1 July 2024</h6>
-                <div className="flex flex-row ">
-                  {/* <FontAwesomeIcon icon={faHome} className="icon-room" /> */}
-                  <FaHome />
-                  <span className="text">3 room </span>
-                  <img
-                    src={iconStairs}
-                    alt="no"
-                    className="icon-stairs  mb-1"
-                  />
-                  <span className="text">5 floor </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 col-md-4">
-            <div className="card">
-              <img
-                src={imageApartment}
-                className="card-img-top"
-                alt="NoImage"
-              />
-              <div className="card-body">
-                <h3 className="card-title">290.000 $</h3>
-                <h5 className="card-title">Apartment for rent</h5>
-                <h6 className="card-date">1 July 2024</h6>
-                <div className="flex flex-row ">
-                  {/* <FontAwesomeIcon icon={faHome} className="icon-room" /> */}
-                  <FaHome />
-                  <span className="text">3 room </span>
-                  <img
-                    src={iconStairs}
-                    alt="no"
-                    className="icon-stairs  mb-1"
-                  />
-                  <span className="text">5 floor </span>
-                </div>
-              </div>
-            </div>
-          </div>
+            ))
+          )}
         </div>
       </div>
       <Next />
     </>
   );
 }
+
 export default Apartments;

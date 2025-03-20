@@ -10,18 +10,13 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Homefast</h3>
           <ul className="">
             <li className="mb-2">
-              <a href="#" className="hover:underline text-gray-300">
+              <Link to="/about-us" className="hover:underline text-gray-300">
                 About Us
-              </a>
+              </Link>
             </li>{" "}
             <li className="mb-2">
-              <a href="#" className="hover:underline text-gray-300">
-                Human Resources
-              </a>
-            </li>
-            <li>
-              <Link to="/advirtise" className="hover:underline text-gray-300">
-                Advertise
+              <Link to="/contact" className="hover:underline text-gray-300">
+                Contact Us
               </Link>
             </li>
           </ul>
@@ -32,14 +27,13 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Our Services</h3>
           <ul>
             <li className="mb-2">
-              <Link href="/shop" className="hover:underline text-gray-300">
-                Our Special Services
+              <Link to="/shop" className="hover:underline text-gray-300">
+                Shop Now
               </Link>
             </li>
-
             <li className="mb-2">
-              <Link to="/shop" className="hover:underline text-gray-300">
-                Projects
+              <Link href="/advirtise" className="hover:underline text-gray-300">
+                Add Apartment
               </Link>
             </li>
           </ul>
@@ -55,14 +49,14 @@ const Footer = () => {
               </a>
             </li>
             <li className="mb-2">
-              <a href="#" className="hover:underline text-gray-300">
-                Operation Guide
-              </a>
+              <Link to="/login" className="hover:underline text-gray-300">
+                Log In
+              </Link>
             </li>
 
             <li>
               <Link to="/contact" className="hover:underline text-gray-300">
-                Contact
+                Contact Us
               </Link>
             </li>
           </ul>
