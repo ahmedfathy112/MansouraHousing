@@ -29,6 +29,7 @@ function NavFilter({ onFilter }) {
             className="number-room me-3 cursor-pointer"
             value={numRooms}
             onChange={(e) => setNumRooms(e.target.value)}
+            data-aos="fade-right"
           >
             <option value="">Number Of Room</option>
             {[1, 2, 3, 4, 5, 6].map((num) => (
@@ -43,6 +44,7 @@ function NavFilter({ onFilter }) {
             className="Category me-3"
             value={numBeds}
             onChange={(e) => setNumBeds(e.target.value)}
+            data-aos="fade-right"
           >
             <option value="">Number Of Beds</option>
             {[1, 2, 3, 4, 5, 6, 7].map((bed, index) => (
@@ -60,6 +62,7 @@ function NavFilter({ onFilter }) {
                 aria-label="min-price"
                 value={minPrice}
                 onChange={(e) => setMinPrice(e.target.value)}
+            data-aos="fade-right"
               />
               <Form.Control
                 type="number"
@@ -68,13 +71,15 @@ function NavFilter({ onFilter }) {
                 aria-label="max-price"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
+            data-aos="fade-right"
+
               />
             </Form.Group>
           </Form>
         </div>
 
         <div className="filter-right">
-          <button className="btn button-filter px-4 py-2" onClick={handleSearch}>
+          <button data-aos="fade-left" data-aos-duration="3000" className="btn button-filter px-4 py-2" onClick={handleSearch}>
             <FontAwesomeIcon icon={faFilter} />
           </button>
         </div>

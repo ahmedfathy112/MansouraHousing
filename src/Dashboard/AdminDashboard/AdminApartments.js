@@ -19,7 +19,9 @@ const AdminApartments = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/Apartment/GetAll`
+          `https://api.allorigins.win/raw?url=${encodeURIComponent(
+            `${process.env.REACT_APP_API_URL}`
+          )}/Apartment/GetAll`
         );
         setApartments(data);
       } catch (error) {
@@ -39,7 +41,9 @@ const AdminApartments = () => {
 
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API_URL}/api/Apartment/${apartmentId}`
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(
+          `${process.env.REACT_APP_API_URL}`
+        )}/Apartment/${apartmentId}`
       );
       setApartments(apartments.filter((a) => a.apartment_Id !== apartmentId));
     } catch (error) {

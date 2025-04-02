@@ -80,7 +80,9 @@ const Sign = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/auth/register`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(
+          `${process.env.REACT_APP_API_URL}`
+        )}/auth/register`,
         {
           method: "POST",
           headers: {

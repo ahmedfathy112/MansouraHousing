@@ -55,7 +55,9 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/auth/login`,
+        `https://api.allorigins.win/get?url=${encodeURIComponent(
+          `${process.env.REACT_APP_API_URL}/auth/login`
+        )}`,
         {
           method: "POST",
           headers: {

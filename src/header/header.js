@@ -53,13 +53,13 @@ const Header = () => {
         {/* جزء تسجيل الدخول أو إظهار اسم المستخدم */}
         <div className="bg-blue-600 pr-5 py-4 pl-[150px] btn-sign max-md:hidden max-xl:pl-16">
           {isAuthenticated ? (
-            <div className="flex items-center space-x-4">
-              <span className="text-white font-semibold">
+            <div className="profile flex items-center space-x-4">
+              <span className="name-profile text-white font-semibold">
                 Welcome, {user || "User"}
               </span>
               <Link
                 to={isOwner ? "/OwnerDashboard" : "/StudentDashboard"}
-                className="bg-blue-400 text-white px-3 py-1 rounded-full hover:bg-blue-500 transition-all"
+                className="btn-profile bg-blue-400 text-white px-3 py-1 rounded-full hover:bg-blue-500 transition-all"
               >
                 Profile
               </Link>
@@ -112,7 +112,7 @@ const Header = () => {
             Shop
           </NavLink>
           {isOwner && !isAdmin ? (
-            <NavLink to="/advirtise" className="font-medium mr-4 links">
+            <NavLink to="/advirtise" className="font-medium mr-4 links links-add">
               Add Apartment
             </NavLink>
           ) : isAdmin ? (
@@ -142,7 +142,7 @@ const Header = () => {
           {/* إظهار حالة تسجيل الدخول في القائمة الجانبية */}
           {isAuthenticated ? (
             <div className="text-center">
-              <span className="text-blue-600 font-semibold block mb-2">
+              <span className="name-profile text-blue-600 font-semibold block mb-2">
                 Welcome, {user}
               </span>
               <Link
@@ -151,7 +151,7 @@ const Header = () => {
                     ? "/StudentDashboard"
                     : "/OwnerDashboard"
                 }
-                className="bg-red-500 text-white px-3 py-1 rounded-full hover:bg-red-700 transition"
+                className=" btn-profile bg-blue-400 text-white px-3 py-1 rounded-full hover:bg-blue-500 transition-all "
                 onClick={closeSidebar}
               >
                 Profile

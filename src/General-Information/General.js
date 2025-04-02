@@ -7,7 +7,9 @@ function General() {
   // console.log(params);
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_API_URL}/api/Apartment/${params.apartment_Id}`
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(
+        `${process.env.REACT_APP_API_URL}`
+      )}/Apartment/${params.apartment_Id}`
     )
       .then((res) => res.json())
       .then((newApartments) => setNewApartments(newApartments));
@@ -15,7 +17,11 @@ function General() {
 
   return (
     <div className="row">
-      <div className="col-lg-9 col-md-9 mb-4 general-information">
+      <div
+        data-aos="fade-right"
+        data-aos-duration="3000"
+        className="col-lg-9 col-md-9 mb-4 general-information"
+      >
         <h5>General Information</h5>
         <div id="Information-All">
           <div className="information-left">
@@ -27,7 +33,7 @@ function General() {
             </div>
             <div className="answer">
               <h6>{newApartments.publisheddate}</h6>
-              <h6>{newApartments.isRented ? " not Avalible" : "Avalible"}</h6>
+              <h6>{newApartments.isRented ? "not Avalible" : "Avalible"}</h6>
               <h6>{newApartments.title}</h6>
               <h6> {newApartments.num_Room}</h6>
             </div>

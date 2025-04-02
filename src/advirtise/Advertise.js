@@ -46,7 +46,9 @@ const Advertise = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/Apartment`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(
+          `${process.env.REACT_APP_API_URL}`
+        )}/Apartment`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

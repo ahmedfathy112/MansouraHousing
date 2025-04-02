@@ -5,6 +5,7 @@ const University = () => {
   return (
     <div>
       <img
+      data-aos="zoom-in-up"
         loading="lazy"
         alt="UnvisrityImage"
         src={UnvisrityImage}

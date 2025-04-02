@@ -8,10 +8,12 @@ function AboutUs() {
     <>
       <div className="container-fluid">
         <div className="row">
-          <h2 className=" address d-flex justify-content-center pt-5 pb-5">
+          <h2  data-aos="fade-down" data-aos-duration="3000" className=" address d-flex justify-content-center pt-5 pb-5">
             About Us Student Hostel
           </h2>
           <img
+          data-aos="fade-left" 
+          data-aos-duration="3000"
             loading="lazy"
             className="newAbout-img d-none pb-5"
             src={about1}
@@ -20,7 +22,7 @@ function AboutUs() {
           {/* appear in 1550px only*/}
           {/* section 1 */}
           <div className="About d-flex justify-content-evenly ">
-            <div className="about-L ">
+            <div data-aos="fade-right" data-aos-duration="3000" className="about-L ">
               <h3> Welcome to Student Hostel, your home away from home!</h3>
               <h4 className="pt-2 pb-2 text-primary">1-introduction</h4>
               <h5 className="text-about">
@@ -65,10 +67,14 @@ function AboutUs() {
               className="about-img "
               src={about1}
               alt="NoImage"
+              data-aos="fade-left" 
+              data-aos-duration="3000"
             />
           </div>
           {/* section 2 */}
           <img
+          data-aos="fade-right"
+           data-aos-duration="3000"
             loading="lazy"
             className="newAbout-img  d-none pb-5"
             src={about2}
@@ -77,12 +83,14 @@ function AboutUs() {
           {/* appear in 1550px only*/}
           <div className="About d-flex justify-content-evenly ">
             <img
+            data-aos="fade-right" 
+            data-aos-duration="3000"
               loading="lazy"
               className="about-img "
               src={about2}
               alt="NoImage"
             />
-            <div className="about-R">
+            <div data-aos="fade-left" data-aos-duration="2000" className="about-R">
               <h4 className=" pb-2 text-primary">3-Facilities and Services:</h4>
               <h5 className="pt-2 pb-2">
                 At Student Hostel, we provide a range of high-quality facilities

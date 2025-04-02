@@ -26,7 +26,15 @@ function Apartments() {
 
   useEffect(() => {
     axios
-      .get("process.env.REACT_APP_API_URL/api/Apartment/GetAll")
+      .get(`http://studenthostelwebsite.runasp.net/api/Apartment/GetAll`, {
+        timeout: 10000,
+        headers: {
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      })
       .then((response) => {
         setAllApartments(response.data);
         setFilteredApartments(response.data);
@@ -88,7 +96,7 @@ function Apartments() {
           visible={true}
           height="80"
           width="80"
-          color="#4fa94d"
+          color="#60a5fa"
           ariaLabel="grid-loading"
           radius="12.5"
           wrapperStyle={{}}
@@ -117,15 +125,15 @@ function Apartments() {
                 <Link
                   to={`/details/${apartment.apartment_Id}/owner/${apartment.ownerId}`}
                 >
-                  <div className="card ">
-                    <div className="w-full h-[200px]">
-                      <img
-                        loading="lazy"
-                        src={`data:image/jpeg;base64,${apartment.apartment_Image}`}
-                        className="card-img-top w-full h-full cover-fill"
-                        alt="NoImage"
-                      />
-                    </div>
+                  <div data-aos="fade-up" className="card ">
+                    {/* <div className=""> */}
+                    <img
+                      loading="lazy"
+                      src={`data:image/jpeg;base64,${apartment.apartment_Image}`}
+                      className="card-img-top"
+                      alt="NoImage"
+                    />
+                    {/* </div> */}
                     <div className="card-body relative">
                       {favorites.some(
                         (fav) => fav.apartment_Id === apartment.apartment_Id

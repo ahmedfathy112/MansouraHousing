@@ -12,7 +12,15 @@ const FeaturedCard = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/Apartment/GetAll`)
+      .get("http://studenthostelwebsite.runasp.net/api/Apartment/GetAll", {
+        timeout: 10000,
+        headers: {
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*", // غير موصى به للإنتاج
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      })
       .then((response) => {
         setApartments(response.data.slice(-4));
       })
@@ -30,7 +38,7 @@ const FeaturedCard = () => {
           visible={true}
           height="80"
           width="80"
-          color="#4fa94d"
+          color="#60a5fa"
           ariaLabel="grid-loading"
           radius="12.5"
           wrapperStyle={{}}
@@ -44,15 +52,17 @@ const FeaturedCard = () => {
     <div className="flex flex-wrap justify-center">
       {apartments.map((apartment) => (
         <Link
+          data-aos="fade-up"
+          data-aos-duration="2000"
           key={apartment.apartment_Id}
           to={`/details/${apartment.apartment_Id}/owner/${apartment.ownerId}`}
-          className="last-added-card w-1/4 p-2 text-black m-4 rounded-lg shadow-md  text-left flex flex-col max-xl:w-1/4 max-md:w-full"
+          className="last-added-card w-1/6 p-2 text-black m-4 mb-5 rounded-lg shadow-md  text-left flex flex-col max-xl:w-1/4 max-md:w-full"
         >
           <img
             loading="lazy"
             alt={apartment.title}
             src={`data:image/jpeg;base64,${apartment.apartment_Image}`}
-            className="w-full h-48 object-cover rounded-md"
+            className="w-full h-100 object-cover rounded-md"
           />
           <span className="text-[24px] font-semibold">${apartment.price}</span>
           <span className="text-[18px] font-semibold">{apartment.title}</span>
@@ -79,7 +89,13 @@ const FeaturedCard = () => {
 const Featured = () => {
   return (
     <div className="w-full mt-4">
-      <div className="w-full text-left text-2xl font-medium">Last Added</div>
+      <div
+        data-aos="fade-right"
+        data-aos-duration="3000"
+        className="w-full text-left text-2xl font-medium"
+      >
+        Last Added
+      </div>
       <div className="w-full flex justify-center flex-row flex-wrap mt-3">
         <FeaturedCard />
       </div>

@@ -17,14 +17,16 @@ function InformationApartment() {
 
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_API_URL}/api/Apartment/${params.apartment_Id}`
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(
+        `${process.env.REACT_APP_API_URL}`
+      )}/Apartment/${params.apartment_Id}`
     )
       .then((res) => res.json())
       .then((newApartments) => setNewApartments(newApartments));
   }, [params.apartment_Id]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/Owner/${params.owner_Id}`)
+    fetch(`/api/Owner/${params.owner_Id}`)
       .then((res) => res.json())
       .then((newOwner) => setNewOwner(newOwner));
   }, [params.owner_Id]);
@@ -47,8 +49,19 @@ function InformationApartment() {
     <div className="container-fluid information-container">
       <div className="row carouselReverse">
         <div className="about mt-3">
-          <h3 className="about-apartment">Apartments For Rent </h3>
-          <h3 className="price-apartment" key={newApartments.apartment_Id}>
+          <h3
+            data-aos="fade-right"
+            data-aos-duration="3000"
+            className="about-apartment"
+          >
+            Apartments For Rent{" "}
+          </h3>
+          <h3
+            data-aos="fade-left"
+            data-aos-duration="3000"
+            className="price-apartment"
+            key={newApartments.apartment_Id}
+          >
             {newApartments.price} $
           </h3>
         </div>
@@ -61,6 +74,8 @@ function InformationApartment() {
             <div className="">
               <div className="w-full h-[500px] bg-slate-400 rounded-lg max-md:w-full max-md:h-auto">
                 <img
+                  data-aos="fade-up"
+                  data-aos-duration="3000"
                   loading="lazy"
                   src={`data:image/jpeg;base64,${newApartments.apartment_Image}`}
                   className="d-block w-full h-full object-cover"
@@ -104,7 +119,12 @@ function InformationApartment() {
           </div> */}
         </div>
 
-        <div key={newOwner.id} className="call-owner col-lg-2 col-md-2">
+        <div
+          data-aos="fade-left"
+          data-aos-duration="3000"
+          key={newOwner.id}
+          className="call-owner col-lg-2 col-md-2"
+        >
           <img
             loading="lazy"
             src={Owner}

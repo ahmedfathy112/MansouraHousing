@@ -20,8 +20,12 @@ const AdminUsers = ({ type }) => {
       try {
         const endpoint =
           type === "owners"
-            ? `${process.env.REACT_APP_API_URL}/api/Owner/`
-            : `${process.env.REACT_APP_API_URL}/api/Student/`;
+            ? `https://api.allorigins.win/raw?url=${encodeURIComponent(
+                `${process.env.REACT_APP_API_URL}`
+              )}/Owner/`
+            : `https://api.allorigins.win/raw?url=${encodeURIComponent(
+                `${process.env.REACT_APP_API_URL}`
+              )}/Student/`;
 
         // إضافة التوكن إلى الهيدر
         const token = localStorage.getItem("token");
@@ -46,8 +50,12 @@ const AdminUsers = ({ type }) => {
     try {
       const endpoint =
         type === "owners"
-          ? `${process.env.REACT_APP_API_URL}/api/Owner/${userId}`
-          : `${process.env.REACT_APP_API_URL}/api/Student/${userId}`;
+          ? `https://api.allorigins.win/raw?url=${encodeURIComponent(
+              `${process.env.REACT_APP_API_URL}`
+            )}/Owner/${userId}`
+          : `https://api.allorigins.win/raw?url=${encodeURIComponent(
+              `${process.env.REACT_APP_API_URL}`
+            )}/Student/${userId}`;
 
       const token = localStorage.getItem("token");
       await axios.delete(endpoint, {

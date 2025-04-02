@@ -16,9 +16,9 @@
   height: 3px;
   transition: 0.5s ease;
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   left: 0;
-  background-color: rgba(11, 11, 64, 0.893);
+  background-color: #60a5fa;
 }
 .links:hover::before {
   /* filter: drop-shadow(1px 0px 10px #d1d1d3);
@@ -95,10 +95,11 @@
     font-size: 75%;
   }
 }
-@media (min-width: 842px) and (max-width: 950px) {
+@media (min-width: 860px) and (max-width: 950px) {
   .links {
-    font-size: 0.9rem;
+    font-size: 0.8rem !important;
     margin: 0 0.3rem 0 0.2rem !important;
+    font-weight: bold !important;
   }
   .Logo-image {
     width: 75%;
@@ -107,22 +108,152 @@
     font-size: 70%;
   }
 }
-@media (min-width: 768px) and (max-width: 841px) {
+
+@media (max-width: 768px) {
+  .Logo-image {
+    width: 70%;
+  }
+}
+@media (min-width:1210px) and (max-width: 1372px) {
+  .name-profile{
+    font-size:10px !important;
+  }
+  .btn-profile{
+    font-size:12px !important;    
+  }
+  .profile{
+    max-width:50% !important;
+  }
+}
+@media (min-width:1000px) and (max-width: 1210px) {
+  .name-profile{
+    font-size:10px !important;
+  }
+  .btn-profile{
+    font-size:11px !important;    
+  }
+  .profile{
+    max-width:50% !important;
+  }
+  .links{
+    font-size: 1rem;
+    margin: 0 1.6rem 0 0 !important;
+  }
+}
+@media (min-width:981px) and (max-width: 999px) {
+  .name-profile{
+    font-size:10px !important;
+  }
+  .btn-profile{
+    font-size:11px !important;    
+  }
+  .profile{
+    max-width:50% !important;
+  }
+  .links{
+    font-size: 0.9rem;
+  }
+}
+@media (min-width:860px) and (max-width: 980px) {
+  .name-profile{
+    font-size:9px !important;
+  }
+  .btn-profile{
+    font-size:10px !important;    
+  }
+  .profile{
+    max-width:50% !important;
+  }
+  .links{
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+}
+/* @media (min-width:768px) and (max-width: 859px) {
+  .name-profile{
+    font-size:7.5px !important;
+  }
+  .btn-profile{
+    font-size:7.5px !important;    
+  }
+  .profile{
+    max-width:50% !important;
+  }
+  .links{
+    font-size: 10px;
+    /* font-weight: bold; */
+  /* }
+}  */
+@media (min-width:1601px)and (max-width:1610px) {
+  .name-profile{
+    font-size:15px !important;
+  }
+  .btn-profile{
+    font-size:15px !important;    
+  }
+}
+@media (min-width:1280px)and (max-width:1292px) {
+  .name-profile{
+    font-size:12px !important;
+  }
+  .btn-profile{
+    font-size:12px !important;    
+  }
+  .links{
+    font-size: 15px;
+  }
+}
+.links-add{
+  margin:0 !important; 
+  padding: 0 !important;
+  margin-top: 20px !important;
+  font-size: 16px;
+}
+@media (min-width: 814px) and (max-width: 859px) {
   .links {
     font-size: 0.8rem;
-    margin: 0 0.2rem 0 0rem !important;
+    margin: 0 0rem 0 0rem !important;
     /* border:0; */
     padding: 0;
+    font-weight: 700;
   }
   .Logo-image {
-    width: 65%;
+    width: 60%;
   }
   .button-sign {
     font-size: 55%;
   }
+  .btn-profile{
+    font-size:9px !important;    
+  }
+  .profile{
+    max-width:100% !important;
+  }
+  .name-profile{
+    font-size:9px !important;
+  }
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 813px) {
+  .links {
+    font-size: 0.7rem;
+    margin: 0 0rem 0 0rem !important;
+    /* border:0; */
+    padding: 0;
+    font-weight: 700;
+  }
   .Logo-image {
-    width: 70%;
+    width: 60%;
+  }
+  .button-sign {
+    font-size: 55%;
+  }
+  .btn-profile{
+    font-size:9px !important;    
+  }
+  .profile{
+    max-width:100% !important;
+  }
+  .name-profile{
+    font-size:8px !important;
   }
 }

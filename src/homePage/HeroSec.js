@@ -12,7 +12,12 @@ const HeroSec = () => {
         className="absolute inset-0 h-full w-full max-md:h-full max-md:w-fit image-home"
       ></img>
       {/* here is the content of the hero section  */}
-      <div className="text-home">
+      <div
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="3000"
+        className="text-home"
+      >
         <h1 className="text-5xl font-semibold text-center text-[#FFFFFF] shadow-lg blur-md">
           Find your perfect student <br /> home near your university
         </h1>

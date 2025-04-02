@@ -25,7 +25,9 @@ const StudentSidebar = ({
         if (result.isConfirmed) {
           const token = localStorage.getItem("token");
           await axios.delete(
-            `${process.env.REACT_APP_API_URL}/api/Owner/${StudentId}`,
+            `https://api.allorigins.win/raw?url=${encodeURIComponent(
+              `${process.env.REACT_APP_API_URL}`
+            )}/Owner/${StudentId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

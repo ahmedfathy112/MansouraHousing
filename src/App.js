@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./footer/footer";
-import Header from "./header/Header";
+import Header from "./header/header";
 import Home from "./homePage/home";
 import Login from "./user/logInPage";
 import Sign from "./user/SignUpPage";
@@ -14,6 +14,9 @@ import OwnerDashboard from "./Dashboard/OwnerDashboard/Owner";
 import StudentDashboard from "./Dashboard/StudentDashboard/Student";
 import AboutUs from "./AboutUs/AboutUs";
 import { AuthProvider } from "./AuthCheck";
+import Aos from "aos";
+import 'aos/dist/aos.css';
+Aos.init({duration:3000});
 function App() {
   return (
     <div className="App">

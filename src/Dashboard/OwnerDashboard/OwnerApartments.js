@@ -32,7 +32,9 @@ const OwnerApartments = () => {
     if (ownerId) {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/Apartment/GetAll`
+          `https://api.allorigins.win/raw?url=${encodeURIComponent(
+            `${process.env.REACT_APP_API_URL}`
+          )}/Apartment/GetAll`
         );
 
         if (response.ok) {
@@ -71,7 +73,9 @@ const OwnerApartments = () => {
     if (window.confirm("Are you sure you want to delete this apartment?")) {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/Apartment/${id}`,
+          `https://api.allorigins.win/raw?url=${encodeURIComponent(
+            `${process.env.REACT_APP_API_URL}`
+          )}/Apartment/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -126,7 +130,9 @@ const OwnerApartments = () => {
       };
 
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/Apartment/${updatedApartment.apartment_Id}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(
+          `${process.env.REACT_APP_API_URL}`
+        )}/Apartment/${updatedApartment.apartment_Id}`,
         {
           method: "PUT",
           headers: {

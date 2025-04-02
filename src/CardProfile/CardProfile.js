@@ -20,7 +20,7 @@ function CardProfile() {
     <div className="container-fluid">
       <div className="row">
         <div className="cards pb-5">
-          <div className="card card-profile">
+          <div data-aos="fade-right" data-aos-duration="3000" className="card card-profile">
             <img loading="lazy" src={photo3} className="photos" alt="NoPhoto" />
             <div className="card-body">
               <h4 className="card-title">Mazen Aymen</h4>
@@ -51,7 +51,7 @@ function CardProfile() {
             </div>
           </div>
 
-          <div className="card  card-profile">
+          <div data-aos="fade-up" data-aos-duration="3000" className="card  card-profile">
             <img loading="lazy" src={photo2} className="photos" alt="NoPhoto" />
             <div className="card-body">
               <h4 className="card-title">Mohamed Kosper</h4>
@@ -81,7 +81,7 @@ function CardProfile() {
               </div>
             </div>
           </div>
-          <div className="card  card-profile">
+          <div data-aos="fade-down" data-aos-duration="3000" className="card   card-profile">
             <img loading="lazy" src={photo1} className="photos" alt="NoPhoto" />
             <div className="card-body">
               <h4 className="card-title">Ahmed fathy</h4>
@@ -112,7 +112,7 @@ function CardProfile() {
             </div>
           </div>
 
-          <div className="card  card-profile">
+          <div data-aos="fade-right" data-aos-duration="3000" className="card  card-profile">
             <img loading="lazy" src={photo4} className="photos" alt="NoPhoto" />
             <div className="card-body">
               <h4 className="card-title">Ahmed morgan</h4>
@@ -143,7 +143,7 @@ function CardProfile() {
             </div>
           </div>
 
-          <div className="card  card-profile">
+          <div data-aos="fade-right" data-aos-duration="3000" className="card  card-profile">
             <img
               loading="lazy"
               src={photo5}
@@ -172,7 +172,7 @@ function CardProfile() {
             </div>
           </div>
 
-          <div className="card  card-profile">
+          <div data-aos="fade-up" data-aos-duration="3000" className="card  card-profile">
             <img loading="lazy" src={photo6} className="photos" alt="NoPhoto" />
             <div className="card-body">
               <h4 className="card-title">Ahmed Badr</h4>
@@ -196,7 +196,7 @@ function CardProfile() {
             </div>
           </div>
 
-          <div className="card  card-profile">
+          <div data-aos="fade-down" data-aos-duration="3000" className="card  card-profile">
             <img
               loading="lazy"
               src={photo8}
@@ -218,7 +218,7 @@ function CardProfile() {
             </div>
           </div>
 
-          <div className="card  card-profile">
+          <div data-aos="fade-left" data-aos-duration="3000" className="card  card-profile">
             <img
               loading="lazy"
               src={photo7}
