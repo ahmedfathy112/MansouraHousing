@@ -80,18 +80,13 @@ const FirstAdvertise = ({ formData, setFormData, nextStep }) => {
     });
 
     try {
-      const response = await fetch(
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(
-          `${process.env.REACT_APP_API_URL}`
-        )}/Apartment`,
-        {
-          method: "POST",
-          body: formDataToSend,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch("/api/Apartment", {
+        method: "POST",
+        body: formDataToSend,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (response.ok) {
         Swal.fire({

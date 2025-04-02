@@ -6,22 +6,14 @@ function General() {
   const params = useParams();
   // console.log(params);
   useEffect(() => {
-    fetch(
-      `https://api.allorigins.win/raw?url=${encodeURIComponent(
-        `${process.env.REACT_APP_API_URL}`
-      )}/Apartment/${params.apartment_Id}`
-    )
+    fetch(`/api/Apartment/${params.apartment_Id}`)
       .then((res) => res.json())
       .then((newApartments) => setNewApartments(newApartments));
   }, [params.apartment_Id]);
 
   return (
     <div className="row">
-      <div
-        data-aos="fade-right"
-        data-aos-duration="3000"
-        className="col-lg-9 col-md-9 mb-4 general-information"
-      >
+      <div data-aos="fade-right" data-aos-duration="3000" className="col-lg-9 col-md-9 mb-4 general-information">
         <h5>General Information</h5>
         <div id="Information-All">
           <div className="information-left">

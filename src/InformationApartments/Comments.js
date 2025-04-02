@@ -18,11 +18,7 @@ const CommentsSec = () => {
 
   const fetchStudentName = async (studentId) => {
     try {
-      const response = await axios.get(
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(
-          `${process.env.REACT_APP_API_URL}`
-        )}/Student/${studentId}`
-      );
+      const response = await axios.get(`/api/Student/${studentId}`);
       if (response.data && response.data.normalizedUserName) {
         return response.data.normalizedUserName;
       } else {
@@ -141,11 +137,7 @@ const CommentsSec = () => {
   };
 
   return (
-    <div
-      data-aos="fade-up"
-      data-aos-duration="3000"
-      className="w-full mt-5 px-3"
-    >
+    <div data-aos="fade-up" data-aos-duration="3000" className="w-full mt-5 px-3">
       <h2 className="text-2xl font-bold mb-4">Comments</h2>
       <div className="w-full py-3 flex flex-row max-md:block">
         <input

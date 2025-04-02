@@ -18,11 +18,7 @@ const AdminApartments = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          `https://api.allorigins.win/raw?url=${encodeURIComponent(
-            `${process.env.REACT_APP_API_URL}`
-          )}/Apartment/GetAll`
-        );
+        const { data } = await axios.get("/api/Apartment/GetAll");
         setApartments(data);
       } catch (error) {
         console.error("Fetch error:", error);
@@ -40,11 +36,7 @@ const AdminApartments = () => {
     if (!window.confirm("Delete this apartment?")) return;
 
     try {
-      await axios.delete(
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(
-          `${process.env.REACT_APP_API_URL}`
-        )}/Apartment/${apartmentId}`
-      );
+      await axios.delete(`/api/Apartment/${apartmentId}`);
       setApartments(apartments.filter((a) => a.apartment_Id !== apartmentId));
     } catch (error) {
       console.error("Delete error:", error);

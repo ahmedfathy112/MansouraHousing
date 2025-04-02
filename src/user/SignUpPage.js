@@ -79,24 +79,19 @@ const Sign = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(
-          `${process.env.REACT_APP_API_URL}`
-        )}/auth/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: formData.username,
-            email: formData.email,
-            PhoneNumber: formData.phoneNumber,
-            password: formData.password,
-            role: formData.role,
-          }),
-        }
-      );
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          PhoneNumber: formData.phoneNumber,
+          password: formData.password,
+          role: formData.role,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Network response was not ok.");

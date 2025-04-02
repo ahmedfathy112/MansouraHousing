@@ -18,20 +18,13 @@ const AdminUsers = ({ type }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const endpoint =
-          type === "owners"
-            ? `https://api.allorigins.win/raw?url=${encodeURIComponent(
-                `${process.env.REACT_APP_API_URL}`
-              )}/Owner/`
-            : `https://api.allorigins.win/raw?url=${encodeURIComponent(
-                `${process.env.REACT_APP_API_URL}`
-              )}/Student/`;
+        const endpoint = type === "owners" ? "/api/Owner/" : "/api/Student/";
 
         // إضافة التوكن إلى الهيدر
         const token = localStorage.getItem("token");
         const response = await axios.get(endpoint, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`, 
           },
         });
 
@@ -49,13 +42,7 @@ const AdminUsers = ({ type }) => {
   const handleDelete = async (userId) => {
     try {
       const endpoint =
-        type === "owners"
-          ? `https://api.allorigins.win/raw?url=${encodeURIComponent(
-              `${process.env.REACT_APP_API_URL}`
-            )}/Owner/${userId}`
-          : `https://api.allorigins.win/raw?url=${encodeURIComponent(
-              `${process.env.REACT_APP_API_URL}`
-            )}/Student/${userId}`;
+        type === "owners" ? `/api/Owner/${userId}` : `/api/Student/${userId}`;
 
       const token = localStorage.getItem("token");
       await axios.delete(endpoint, {
@@ -66,7 +53,9 @@ const AdminUsers = ({ type }) => {
 
       setUsers(
         users.filter((user) =>
-          type === "owners" ? user.id !== userId : user.id !== userId
+          type === "owners"
+            ? user.id !== userId
+            : user.id !== userId
         )
       );
     } catch (error) {

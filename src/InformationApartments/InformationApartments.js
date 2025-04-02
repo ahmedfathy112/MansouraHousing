@@ -16,11 +16,7 @@ function InformationApartment() {
   const params = useParams();
 
   useEffect(() => {
-    fetch(
-      `https://api.allorigins.win/raw?url=${encodeURIComponent(
-        `${process.env.REACT_APP_API_URL}`
-      )}/Apartment/${params.apartment_Id}`
-    )
+    fetch(`/api/Apartment/${params.apartment_Id}`)
       .then((res) => res.json())
       .then((newApartments) => setNewApartments(newApartments));
   }, [params.apartment_Id]);
@@ -49,19 +45,8 @@ function InformationApartment() {
     <div className="container-fluid information-container">
       <div className="row carouselReverse">
         <div className="about mt-3">
-          <h3
-            data-aos="fade-right"
-            data-aos-duration="3000"
-            className="about-apartment"
-          >
-            Apartments For Rent{" "}
-          </h3>
-          <h3
-            data-aos="fade-left"
-            data-aos-duration="3000"
-            className="price-apartment"
-            key={newApartments.apartment_Id}
-          >
+          <h3 data-aos="fade-right" data-aos-duration="3000" className="about-apartment">Apartments For Rent </h3>
+          <h3 data-aos="fade-left" data-aos-duration="3000" className="price-apartment" key={newApartments.apartment_Id}>
             {newApartments.price} $
           </h3>
         </div>
@@ -74,8 +59,8 @@ function InformationApartment() {
             <div className="">
               <div className="w-full h-[500px] bg-slate-400 rounded-lg max-md:w-full max-md:h-auto">
                 <img
-                  data-aos="fade-up"
-                  data-aos-duration="3000"
+                data-aos="fade-up"
+                 data-aos-duration="3000"
                   loading="lazy"
                   src={`data:image/jpeg;base64,${newApartments.apartment_Image}`}
                   className="d-block w-full h-full object-cover"
@@ -119,12 +104,7 @@ function InformationApartment() {
           </div> */}
         </div>
 
-        <div
-          data-aos="fade-left"
-          data-aos-duration="3000"
-          key={newOwner.id}
-          className="call-owner col-lg-2 col-md-2"
-        >
+        <div data-aos="fade-left" data-aos-duration="3000" key={newOwner.id} className="call-owner col-lg-2 col-md-2">
           <img
             loading="lazy"
             src={Owner}
@@ -138,14 +118,14 @@ function InformationApartment() {
               <span className="icon-phone ">
                 <FontAwesomeIcon icon={faPhone} />
               </span>
-              <span className="text-phone">VIEW PHONE</span>
+              <span  className="text-phone">VIEW PHONE</span>
             </button>
           )}
           <button className="btn  message-button" onClick={emailOwner}>
             <span className="icon-email">
               <FontAwesomeIcon icon={faEnvelope} />
             </span>
-            <span className="text-email">SEND MESSAGE</span>
+            <span  className="text-email">SEND MESSAGE</span>
           </button>
         </div>
       </div>

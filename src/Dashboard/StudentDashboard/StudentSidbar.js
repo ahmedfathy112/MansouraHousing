@@ -24,16 +24,11 @@ const StudentSidebar = ({
       }).then(async (result) => {
         if (result.isConfirmed) {
           const token = localStorage.getItem("token");
-          await axios.delete(
-            `https://api.allorigins.win/raw?url=${encodeURIComponent(
-              `${process.env.REACT_APP_API_URL}`
-            )}/Owner/${StudentId}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          await axios.delete(`/api/Owner/${StudentId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
 
           localStorage.removeItem("token");
           Swal.fire("Goodbye!", "You have left us.", "success");
