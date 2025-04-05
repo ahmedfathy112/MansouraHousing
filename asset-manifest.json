@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/MansouraHousing/static/css/main.37200a0d.css",
-    "main.js": "/MansouraHousing/static/js/main.44edec2c.js",
+    "main.css": "/MansouraHousing/static/css/main.c064eae5.css",
+    "main.js": "/MansouraHousing/static/js/main.7bf30fe2.js",
     "static/js/453.c06fe70b.chunk.js": "/MansouraHousing/static/js/453.c06fe70b.chunk.js",
     "static/media/photokosper.jpg": "/MansouraHousing/static/media/photokosper.d66c632d91b259928881.jpg",
     "static/media/ContactImage.png": "/MansouraHousing/static/media/ContactImage.bd6cd5dc34937eabbd5d.png",
@@ -17,12 +17,12 @@
     "static/media/photobadr.jpg": "/MansouraHousing/static/media/photobadr.074f6b38f591f2cda79c.jpg",
     "static/media/photoahmed.jpg": "/MansouraHousing/static/media/photoahmed.4e7e69dd394ee91756f0.jpg",
     "index.html": "/MansouraHousing/index.html",
-    "main.37200a0d.css.map": "/MansouraHousing/static/css/main.37200a0d.css.map",
-    "main.44edec2c.js.map": "/MansouraHousing/static/js/main.44edec2c.js.map",
+    "main.c064eae5.css.map": "/MansouraHousing/static/css/main.c064eae5.css.map",
+    "main.7bf30fe2.js.map": "/MansouraHousing/static/js/main.7bf30fe2.js.map",
     "453.c06fe70b.chunk.js.map": "/MansouraHousing/static/js/453.c06fe70b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.37200a0d.css",
-    "static/js/main.44edec2c.js"
+    "static/css/main.c064eae5.css",
+    "static/js/main.7bf30fe2.js"
   ]
 }
